@@ -17,7 +17,7 @@
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1610196589</DateInstalled>
+  <DateInstalled>1610197770</DateInstalled>
   <DonateText/>
   <DonateLink/>
   <Description/>
@@ -35,6 +35,11 @@
     <Volume>
       <HostDir/>
       <ContainerDir>/music</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt/user/appdata/alpine-koel-music</HostDir>
+      <ContainerDir>/appdata</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
@@ -97,4 +102,5 @@
   <Config Name="ADMIN_PASSWORD" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Container Variable: ADMIN_PASSWORD" Type="Variable" Display="always" Required="true" Mask="true">test</Config>
   <Config Name="Web-Port" Target="8000" Default="8000" Mode="tcp" Description="Container Port: 8000" Type="Port" Display="always" Required="false" Mask="false">8000</Config>
   <Config Name="Music" Target="/music" Default="" Mode="rw" Description="Container Path: /music" Type="Path" Display="always" Required="false" Mask="false"/>
+  <Config Name="Appdata" Target="/appdata" Default="" Mode="rw" Description="Container Path: /appdata" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/alpine-koel-music</Config>
 </Container>
