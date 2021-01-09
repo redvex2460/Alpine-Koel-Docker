@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Alpine-Koel-Docker
-=======
 # Alpine-Koel-Docker
 
 This repo is created for using with UnRaid. 
