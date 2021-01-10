@@ -2,6 +2,10 @@
 if test -f ".installed"; then
     php artisan serve --host 0.0.0.0
 else
+	#Generate Database
+    if [ $DB_CONNECTION = "sqlite-persistent" ]; then    
+        sqlite3 $DB_DATABASE "VACUUM;"
+    fi
     composer install
     #Edit env File
     #Edit database related Vars
@@ -15,10 +19,7 @@ else
     sed -i "s/ADMIN_NAME=.*/ADMIN_NAME=\"$ADMIN_NAME\"/" /var/www/koel/.env
     sed -i "s/ADMIN_EMAIL=.*/ADMIN_EMAIL=\"$ADMIN_EMAIL\"/" /var/www/koel/.env
     sed -i "s/ADMIN_PASSWORD=.*/ADMIN_PASSWORD=$ADMIN_PASSWORD/" /var/www/koel/.env
-    #Generate Database
-    if [ $DB_CONNECTION = "sqlite-persistent" ]; then    
-        sqlite3 $DB_DATABASE "VACUUM;"
-    fi
+    
     php artisan koel:init --no-interaction
     touch .installed
     printf "$ADMIN_PASSWORD\n$ADMIN_PASSWORD" | php artisan koel:admin:change-password
